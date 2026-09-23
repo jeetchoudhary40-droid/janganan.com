@@ -1,0 +1,10 @@
+# Googlebot and Global Web Crawler Directives for जनगणना (Janganana)
+User-agent: *
+Allow: /
+
+# Fast Indexing & Crawl optimization
+Sitemap: https://janganana.com/sitemap.xml
+
+# Prevent indexing of search modal parameters
+Disallow: /*?s=*
+Disallow: /*?modal=*

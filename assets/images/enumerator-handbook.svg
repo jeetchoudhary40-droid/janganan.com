@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <defs>
+    <linearGradient id="enumGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#334155" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="800" height="450" fill="url(#enumGrad)" />
+  
+  <!-- Handbook Graphic -->
+  <g transform="translate(320, 60)" filter="drop-shadow(0 15px 30px rgba(0,0,0,0.5))">
+    <rect width="160" height="220" rx="8" fill="#FF671F" />
+    <rect x="10" y="10" width="140" height="200" rx="4" fill="#ffffff" />
+    <rect x="25" y="30" width="110" height="15" rx="2" fill="#046A38" />
+    <rect x="25" y="60" width="110" height="6" rx="2" fill="#cbd5e1" />
+    <rect x="25" y="75" width="90" height="6" rx="2" fill="#cbd5e1" />
+    <rect x="25" y="90" width="100" height="6" rx="2" fill="#cbd5e1" />
+    <circle cx="80" cy="140" r="28" fill="#06038D" />
+    <text x="80" y="145" font-family="sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">2026</text>
+  </g>
+
+  <!-- Title Badge -->
+  <rect x="150" y="330" width="500" height="65" rx="8" fill="rgba(255,255,255,0.95)" />
+  <text x="400" y="358" font-family="sans-serif" font-size="18" font-weight="bold" fill="#0f2744" text-anchor="middle">
+    ENUMERATOR & SUPERVISOR HANDBOOK
+  </text>
+  <text x="400" y="380" font-family="sans-serif" font-size="13" font-weight="600" fill="#FF671F" text-anchor="middle">
+    प्रगणक एवं पर्यवेक्षक फील्ड नियमावली व मोबाइल ऐप गाइड
+  </text>
+</svg>

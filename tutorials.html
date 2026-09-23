@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="hi" class="font-md">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>जनगणना मार्गदर्शिका एवं ट्यूटोरियल | Census of India Step-by-Step Guides</title>
+  
+  <meta name="title" content="जनगणना मार्गदर्शिका एवं ट्यूटोरियल | Census of India Step-by-Step Guides">
+  <meta name="description" content="Step-by-step tutorials for online self-enumeration, understanding the 31 houselisting parameters, mobile app guide, and enumerator instructions for Census of India.">
+  <meta name="keywords" content="Census Tutorials, Self-Enumeration steps, House listing guide, Enumerator Handbook, Census 2026 instructions">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://janganana.com/tutorials.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://janganana.com/tutorials.html">
+  <meta property="og:title" content="जनगणना मार्गदर्शिका एवं ट्यूटोरियल | Census of India Guides">
+  <meta property="og:description" content="Comprehensive step-by-step instructions for citizens, enumerators, and supervisors.">
+  <meta property="og:image" content="https://janganana.com/assets/images/self-enumeration-banner.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/accessibility.css">
+</head>
+<body class="lang-hi">
+
+  <a href="#mainContent" class="skip-to-content" data-en="Skip to Main Content" data-hi="मुख्य सामग्री पर जाएं">मुख्य सामग्री पर जाएं</a>
+
+  <!-- Top Accessibility Bar -->
+  <div class="top-accessibility-bar">
+    <div class="container top-bar-inner">
+      <div class="gov-india-badge">
+        <div class="tricolor-stripe" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+        <span data-en="National Census Guidance Hub" data-hi="राष्ट्रीय जनगणना मार्गदर्शन केंद्र">राष्ट्रीय जनगणना मार्गदर्शन केंद्र</span>
+      </div>
+
+      <div class="accessibility-controls">
+        <div class="font-resizer">
+          <button class="font-btn" data-size="font-sm">A-</button>
+          <button class="font-btn active" data-size="font-md">A</button>
+          <button class="font-btn" data-size="font-lg">A+</button>
+          <button class="font-btn" data-size="font-xl">A++</button>
+        </div>
+        <button id="contrastToggleBtn" class="contrast-btn">🎨 <span class="contrast-label" data-en="Theme" data-hi="थीम">थीम</span></button>
+        <button class="lang-toggle-btn">🌐 English</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-wrapper">
+        <img src="assets/images/ashoka-emblem.svg" alt="Emblem" class="ashoka-emblem-svg" width="48" height="48">
+        <div class="brand-text">
+          <h1>जन<span>गणना</span></h1>
+          <span class="brand-subtitle" data-en="Tutorials & Instructions" data-hi="मार्गदर्शिका एवं निर्देश">मार्गदर्शिका एवं निर्देश</span>
+        </div>
+      </a>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link" data-en="Home" data-hi="होम">होम</a></li>
+          <li><a href="tutorials.html" class="nav-link active" data-en="Tutorials" data-hi="ट्यूटोरियल">ट्यूटोरियल</a></li>
+          <li><a href="updates.html" class="nav-link" data-en="Updates" data-hi="अपडेट्स">अपडेट्स</a></li>
+          <li><a href="faqs.html" class="nav-link" data-en="FAQs" data-hi="प्रश्नोत्तरी">प्रश्नोत्तरी</a></li>
+          <li><a href="downloads.html" class="nav-link" data-en="Downloads" data-hi="डाउनलोड">डाउनलोड</a></li>
+          <li><a href="about.html" class="nav-link" data-en="About" data-hi="परिचय">परिचय</a></li>
+          <li><a href="contact.html" class="nav-link" data-en="Contact" data-hi="संपर्क">संपर्क</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button id="headerSearchBtn" class="btn-header-search" aria-label="Search">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <span data-en="Search..." data-hi="खोजें...">खोजें...</span>
+        </button>
+        <button id="mobileMenuToggleBtn" class="mobile-menu-toggle" aria-label="Toggle Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Banner -->
+  <div style="background: linear-gradient(135deg, #0b2545, #1e3a8a); color:#fff; padding: 2.5rem 0;">
+    <div class="container">
+      <h1 style="font-size: 2.2rem; font-weight: 800; margin-bottom: 0.5rem;" data-en="Step-by-Step Census Tutorials & Guides" data-hi="चरण-दर-चरण जनगणना ट्यूटोरियल व गाइड">चरण-दर-चरण जनगणना ट्यूटोरियल व गाइड</h1>
+      <p style="color:#cbd5e1; font-size: 1.05rem;" data-en="Simplified manuals and video-like visual guides for every aspect of Census participation." data-hi="जनगणना में भागीदारी के प्रत्येक पहलू के लिए सरल और स्पष्ट दिशानिर्देश।">जनगणना में भागीदारी के प्रत्येक पहलू के लिए सरल और स्पष्ट दिशानिर्देश।</p>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main id="mainContent" class="container" style="padding-top: 2.5rem; padding-bottom: 4rem;">
+    
+    <div class="articles-grid">
+      <!-- Article 1: Self Enumeration -->
+      <article class="article-card">
+        <div class="article-card-thumb">
+          <img src="assets/images/self-enumeration-banner.svg" alt="Self Enumeration Guide" loading="lazy">
+          <span class="card-category-badge badge-tutorial" data-en="Citizen Guide" data-hi="नागरिक गाइड">नागरिक गाइड</span>
+        </div>
+        <div class="article-card-body">
+          <div class="article-meta">
+            <span>📅 15 Sep 2026</span>
+            <span>⏱️ 6 min read</span>
+          </div>
+          <h2 class="article-card-title">
+            <a href="article.html?id=digital-census-self-enumeration-guide" data-en="Complete Guide: How to Complete Census Self-Enumeration Online (Step-by-Step)" data-hi="संपूर्ण गाइड: ऑनलाइन जनगणना स्व-गणना (Self-Enumeration) कैसे पूरी करें (चरण-दर-चरण)">
+              संपूर्ण गाइड: ऑनलाइन जनगणना स्व-गणना (Self-Enumeration) कैसे पूरी करें (चरण-दर-चरण)
+            </a>
+          </h2>
+          <p class="article-card-excerpt" data-en="Learn how citizens can fill out their household census form online using Aadhaar OTP verification or mobile registration prior to the enumerator's physical visit." data-hi="जानें कि प्रगणक के भौतिक दौरे से पहले नागरिक आधार ओटीपी सत्यापन या मोबाइल पंजीकरण के माध्यम से अपने परिवार का जनगणना फॉर्म ऑनलाइन कैसे भर सकते हैं।">
+            जानें कि प्रगणक के भौतिक दौरे से पहले नागरिक आधार ओटीपी सत्यापन या मोबाइल पंजीकरण के माध्यम से अपने परिवार का जनगणना फॉर्म ऑनलाइन कैसे भर सकते हैं।
+          </p>
+          <div class="article-card-footer">
+            <a href="article.html?id=digital-census-self-enumeration-guide" class="read-more-btn">
+              <span data-en="Read Full Tutorial" data-hi="पूरा ट्यूटोरियल पढ़ें">पूरा ट्यूटोरियल पढ़ें</span> →
+            </a>
+            <button class="btn-bookmark" data-article-id="digital-census-self-enumeration-guide">🔖</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Article 2: 31 Questions Breakdown -->
+      <article class="article-card">
+        <div class="article-card-thumb">
+          <img src="assets/images/houselisting-banner.svg" alt="31 Questions Breakdown" loading="lazy">
+          <span class="card-category-badge badge-guide" data-en="Questionnaire" data-hi="प्रश्नावली">प्रश्नावली</span>
+        </div>
+        <div class="article-card-body">
+          <div class="article-meta">
+            <span>📅 18 Sep 2026</span>
+            <span>⏱️ 8 min read</span>
+          </div>
+          <h2 class="article-card-title">
+            <a href="article.html?id=house-listing-31-questions-guide" data-en="Phase 1 Census: Understanding the 31 House Listing & Housing Questions" data-hi="चरण 1 जनगणना: मकान सूचीकरण और आवास संबंधी 31 प्रश्नों को समझें">
+              चरण 1 जनगणना: मकान सूचीकरण और आवास संबंधी 31 प्रश्नों को समझें
+            </a>
+          </h2>
+          <p class="article-card-excerpt" data-en="A comprehensive breakdown of all 31 parameters asked during Phase 1 Houselisting operations, covering building materials, living amenities, asset ownership, and household size." data-hi="चरण 1 मकान सूचीकरण संचालन के दौरान पूछे जाने वाले सभी 31 मापदंडों का विस्तृत विवरण, जिसमें निर्माण सामग्री, रहन-सहन की सुविधाएं और संपत्ति स्वामित्व शामिल है।">
+            चरण 1 मकान सूचीकरण संचालन के दौरान पूछे जाने वाले सभी 31 मापदंडों का विस्तृत विवरण, जिसमें निर्माण सामग्री, रहन-सहन की सुविधाएं और संपत्ति स्वामित्व शामिल है।
+          </p>
+          <div class="article-card-footer">
+            <a href="article.html?id=house-listing-31-questions-guide" class="read-more-btn">
+              <span data-en="Read Full Tutorial" data-hi="पूरा ट्यूटोरियल पढ़ें">पूरा ट्यूटोरियल पढ़ें</span> →
+            </a>
+            <button class="btn-bookmark" data-article-id="house-listing-31-questions-guide">🔖</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Article 3: Field Enumerator Handbook -->
+      <article class="article-card">
+        <div class="article-card-thumb">
+          <img src="assets/images/enumerator-handbook.svg" alt="Enumerator Handbook" loading="lazy">
+          <span class="card-category-badge badge-tutorial" data-en="Official Training" data-hi="प्रशिक्षण">प्रशिक्षण</span>
+        </div>
+        <div class="article-card-body">
+          <div class="article-meta">
+            <span>📅 08 Sep 2026</span>
+            <span>⏱️ 7 min read</span>
+          </div>
+          <h2 class="article-card-title">
+            <a href="article.html?id=enumerator-supervisor-training-handbook" data-en="Enumerator & Supervisor Field Handbook: Best Practices & Mobile App Guide" data-hi="प्रगणक एवं पर्यवेक्षक फील्ड हैंडबुक: सर्वोत्तम कार्यप्रणाली एवं मोबाइल ऐप गाइड">
+              प्रगणक एवं पर्यवेक्षक फील्ड हैंडबुक: सर्वोत्तम कार्यप्रणाली एवं मोबाइल ऐप गाइड
+            </a>
+          </h2>
+          <p class="article-card-excerpt" data-en="Essential operational guide for school teachers, Anganwadi workers, and government staff designated as Census Enumerators and Supervisors." data-hi="फील्ड डेटा संग्रह के लिए जनगणना प्रगणक एवं पर्यवेक्षक के रूप में नामित शिक्षकों, आंगनवाड़ी कार्यकर्ताओं और सरकारी कर्मचारियों के लिए आवश्यक परिचालन गाइड।">
+            फील्ड डेटा संग्रह के लिए जनगणना प्रगणक एवं पर्यवेक्षक के रूप में नामित शिक्षकों, आंगनवाड़ी कार्यकर्ताओं और सरकारी कर्मचारियों के लिए आवश्यक परिचालन गाइड।
+          </p>
+          <div class="article-card-footer">
+            <a href="article.html?id=enumerator-supervisor-training-handbook" class="read-more-btn">
+              <span data-en="Read Full Tutorial" data-hi="पूरा ट्यूटोरियल पढ़ें">पूरा ट्यूटोरियल पढ़ें</span> →
+            </a>
+            <button class="btn-bookmark" data-article-id="enumerator-supervisor-training-handbook">🔖</button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-top">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h3 data-en="About Janganana Portal" data-hi="जनगणना पोर्टल के बारे में">जनगणना पोर्टल के बारे में</h3>
+          <p data-en="An independent, highly accessible public assistance repository dedicated to facilitating awareness, digital self-enumeration guidance, and verified updates on the National Census of India." data-hi="भारत की राष्ट्रीय जनगणना पर जन-जागरूकता, डिजिटल स्व-गणना मार्गदर्शन और प्रामाणिक सूचनाओं के प्रसार को समर्पित एक स्वतंत्र एवं सुलभ सार्वजनिक सहायता मंच।">
+            भारत की राष्ट्रीय जनगणना पर जन-जागरूकता, डिजिटल स्व-गणना मार्गदर्शन और प्रामाणिक सूचनाओं के प्रसार को समर्पित एक स्वतंत्र एवं सुलभ सार्वजनिक सहायता मंच।
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h3 data-en="Quick Links" data-hi="त्वरित लिंक">त्वरित लिंक</h3>
+          <ul class="footer-links">
+            <li><a href="about.html" data-en="About Us" data-hi="हमारे बारे में">हमारे बारे में</a></li>
+            <li><a href="tutorials.html" data-en="All Tutorials" data-hi="सभी ट्यूटोरियल">सभी ट्यूटोरियल</a></li>
+            <li><a href="faqs.html" data-en="Census FAQs" data-hi="सामान्य प्रश्न (FAQs)">सामान्य प्रश्न (FAQs)</a></li>
+            <li><a href="downloads.html" data-en="Forms & Manuals" data-hi="फॉर्म व नियमावली">फॉर्म व नियमावली</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3 data-en="Legal & Policy" data-hi="नीति एवं विधिक">नीति एवं विधिक</h3>
+          <ul class="footer-links">
+            <li><a href="disclaimer.html" data-en="Disclaimer" data-hi="अस्वीकरण (Disclaimer)">अस्वीकरण (Disclaimer)</a></li>
+            <li><a href="privacy.html" data-en="Privacy Policy" data-hi="गोपनीयता नीति (Privacy)">गोपनीयता नीति (Privacy)</a></li>
+            <li><a href="contact.html" data-en="Contact Us" data-hi="संपर्क करें">संपर्क करें</a></li>
+            <li><a href="sitemap.xml" data-en="XML Sitemap" data-hi="साइटमैप">साइटमैप</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3 data-en="24x7 Official Helpline" data-hi="आधिकारिक राष्ट्रीय हेल्पलाइन">आधिकारिक राष्ट्रीय हेल्पलाइन</h3>
+          <p data-en="Government of India Official Census Helpline:" data-hi="भारत सरकार की आधिकारिक जनगणना हेल्पलाइन:">भारत सरकार की आधिकारिक जनगणना हेल्पलाइन:</p>
+          <div class="helpline-box">
+            <span class="helpline-number">1800-180-2026</span>
+            <span style="font-size:0.75rem; color:#cbd5e1;">(Toll-Free • Government Helpline)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Non-Gov Footer Note -->
+    <div style="background: #050b14; border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); padding: 1.25rem 0;">
+      <div class="container" style="text-align: center; color: #94a3b8; font-size: 0.8125rem; line-height: 1.6;">
+        <strong style="color: #fbbf24;" data-en="DISCLAIMER:" data-hi="अस्वीकरण (DISCLAIMER):">अस्वीकरण (DISCLAIMER):</strong>
+        <span data-en="जनगणना.com is a private, independent educational and citizen assistance portal. It is NOT an official government website and has NO affiliation with the Government of India, Ministry of Home Affairs (MHA), or ORGI. Official portal is https://censusindia.gov.in." data-hi="जनगणना.com एक निजी, स्वतंत्र शैक्षिक एवं नागरिक सहायता पोर्टल है। यह कोई सरकारी वेबसाइट नहीं है और इसका भारत सरकार, गृह मंत्रालय या ORGI से कोई संबंध नहीं है। आधिकारिक पोर्टल https://censusindia.gov.in है।">
+          जनगणना.com एक निजी, स्वतंत्र शैक्षिक एवं नागरिक सहायता पोर्टल है। यह कोई सरकारी वेबसाइट नहीं है और इसका भारत सरकार, गृह मंत्रालय या ORGI से कोई संबंध नहीं है। आधिकारिक पोर्टल https://censusindia.gov.in है।
+        </span>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <div>© 2026 <strong>जनगणना.com</strong> - Census of India Assistance Portal.</div>
+        <div>Designed for 100% Google SEO & AdSense Policy Compliance.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Search Modal Dialog -->
+  <div id="searchModalBackdrop" class="search-modal-backdrop">
+    <div class="search-modal-card">
+      <div class="search-modal-header">
+        <input id="searchModalInput" type="search" class="search-modal-input" placeholder="खोजें...">
+        <button id="searchModalClose">✕</button>
+      </div>
+      <div id="searchResultsContainer" class="search-results-container"></div>
+    </div>
+  </div>
+
+  <script src="js/articles-data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/search.js"></script>
+</body>
+</html>

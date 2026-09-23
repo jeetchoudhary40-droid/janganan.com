@@ -1,0 +1,21 @@
+{
+  "name": "जनगणना (Janganana) - Census of India Assistance Portal",
+  "short_name": "जनगणना",
+  "description": "Comprehensive Census of India assistance, tutorials, official updates, FAQs, and self-enumeration portal guide.",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#0b2545",
+  "theme_color": "#FF671F",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "assets/images/ashoka-emblem.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["government", "education", "news", "reference"],
+  "lang": "hi-IN",
+  "dir": "ltr"
+}

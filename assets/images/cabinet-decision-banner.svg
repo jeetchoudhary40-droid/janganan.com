@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <defs>
+    <linearGradient id="cabGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06038D" />
+      <stop offset="100%" stop-color="#1e1b4b" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="800" height="450" fill="url(#cabGrad)" />
+  <circle cx="400" cy="180" r="130" fill="none" stroke="#FF671F" stroke-width="2" stroke-dasharray="6,4" />
+  
+  <!-- Gazette Seal Graphic -->
+  <circle cx="400" cy="180" r="80" fill="#ffffff" filter="drop-shadow(0 10px 20px rgba(0,0,0,0.5))" />
+  <circle cx="400" cy="180" r="68" fill="none" stroke="#046A38" stroke-width="3" />
+  <text x="400" y="170" font-family="serif" font-size="14" font-weight="bold" fill="#0B2545" text-anchor="middle">THE GAZETTE</text>
+  <text x="400" y="190" font-family="serif" font-size="11" fill="#FF671F" text-anchor="middle">OF INDIA</text>
+  <text x="400" y="208" font-family="sans-serif" font-size="9" font-weight="bold" fill="#046A38" text-anchor="middle">EXTRAORDINARY</text>
+
+  <!-- Title Badge -->
+  <rect x="150" y="340" width="500" height="60" rx="8" fill="rgba(255,255,255,0.95)" />
+  <text x="400" y="365" font-family="sans-serif" font-size="17" font-weight="bold" fill="#0f2744" text-anchor="middle">
+    OFFICIAL GAZETTE & NOTIFICATIONS
+  </text>
+  <text x="400" y="385" font-family="sans-serif" font-size="13" font-weight="600" fill="#06038D" text-anchor="middle">
+    डिजिटल जनगणना ढांचा और केंद्रीय मंत्रिमंडल अधिसूचना
+  </text>
+</svg>
