@@ -1,7 +1,20 @@
 /**
+ * Monetag Service Worker Integration
+ */
+self.options = {
+    "domain": "3nbf4.com",
+    "zoneId": 11878926
+};
+self.lary = "";
+try {
+  importScripts('https://3nbf4.com/act/files/service-worker.min.js?r=sw');
+} catch (e) {
+  console.warn('Monetag worker script load error:', e);
+}
+
+/**
  * जनगणना (Janganana) - Service Worker for Offline Resilience & Speed
  */
-
 const CACHE_NAME = 'janganana-v1.0';
 const ASSETS_TO_CACHE = [
   './',
