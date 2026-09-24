@@ -3,8 +3,9 @@ User-agent: *
 Allow: /
 
 # Fast Indexing & Crawl optimization
-Sitemap: https://janganana.com/sitemap.xml
+Sitemap: https://xn--31bjwsc6k.com/sitemap.xml
 
 # Prevent indexing of search modal parameters
 Disallow: /*?s=*
 Disallow: /*?modal=*
+
