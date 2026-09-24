@@ -2,32 +2,39 @@
   <defs>
     <linearGradient id="helpGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#046A38" />
-      <stop offset="100%" stop-color="#022c16" />
+      <stop offset="60%" stop-color="#064e3b" />
+      <stop offset="100%" stop-color="#022c22" />
+    </linearGradient>
+    <linearGradient id="saffronGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FF671F" />
+      <stop offset="100%" stop-color="#FFA41B" />
     </linearGradient>
   </defs>
   
   <rect width="800" height="450" fill="url(#helpGrad)" />
   
-  <!-- Headset / Phone Graphics -->
-  <circle cx="400" cy="170" r="90" fill="#ffffff" filter="drop-shadow(0 15px 30px rgba(0,0,0,0.4))" />
-  <circle cx="400" cy="170" r="76" fill="#f0fdf4" />
-  
-  <!-- Headset Icon -->
-  <path d="M 360 180 A 40 40 0 0 1 440 180" fill="none" stroke="#046A38" stroke-width="8" stroke-linecap="round" />
-  <rect x="348" y="165" width="16" height="30" rx="6" fill="#FF671F" />
-  <rect x="436" y="165" width="16" height="30" rx="6" fill="#FF671F" />
-  <path d="M 444 190 Q 430 220 395 215" fill="none" stroke="#046A38" stroke-width="4" stroke-linecap="round" />
-  <circle cx="390" cy="215" r="6" fill="#046A38" />
+  <!-- Headset / Phone Graphic -->
+  <g transform="translate(320, 60)">
+    <!-- Shadow -->
+    <rect x="8" y="10" width="160" height="210" rx="16" fill="#000000" opacity="0.4" />
+    <rect width="160" height="210" rx="16" fill="#ffffff" />
+    
+    <circle cx="80" cy="70" r="40" fill="#ecfdf5" stroke="#046A38" stroke-width="2" />
+    <text x="80" y="85" font-size="36" text-anchor="middle">📞</text>
+    
+    <rect x="20" y="130" width="120" height="24" rx="6" fill="#FF671F" />
+    <text x="80" y="146" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">24x7 TOLL FREE</text>
+    
+    <text x="80" y="180" font-family="monospace" font-size="12" font-weight="bold" fill="#046A38" text-anchor="middle">1800-180-2026</text>
+  </g>
 
   <!-- Title Badge -->
-  <rect x="140" y="320" width="520" height="85" rx="10" fill="rgba(255,255,255,0.98)" />
-  <text x="400" y="352" font-family="sans-serif" font-size="22" font-weight="900" fill="#046A38" text-anchor="middle">
-    TOLL-FREE: 1800-180-2026
+  <rect x="130" y="340" width="540" height="65" rx="10" fill="#ffffff" />
+  <rect x="130" y="340" width="540" height="4" fill="url(#saffronGrad)" />
+  <text x="400" y="368" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="800" fill="#0f2744" text-anchor="middle">
+    NATIONAL CENSUS HELPLINE &amp; DESK
   </text>
-  <text x="400" y="375" font-family="sans-serif" font-size="13" font-weight="bold" fill="#0f2744" text-anchor="middle">
-    24x7 Multi-Lingual National Census Assistance Directory
-  </text>
-  <text x="400" y="393" font-family="sans-serif" font-size="11" font-weight="600" fill="#FF671F" text-anchor="middle">
-    नागरिक सहायता एवं शिकायत निवारण केंद्र
+  <text x="400" y="390" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#046A38" text-anchor="middle">
+    24x7 बहुभाषी टोल-फ्री हेल्पलाइन एवं सहायता केंद्र
   </text>
 </svg>
