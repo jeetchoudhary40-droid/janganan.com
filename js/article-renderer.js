@@ -58,6 +58,12 @@ function renderArticlePage() {
   const authorEl = document.getElementById('articleAuthorName');
   if (authorEl) authorEl.textContent = article.author;
 
+  const featImg = document.getElementById('articleFeatureImg');
+  if (featImg && article.image) {
+    featImg.src = article.image;
+    featImg.alt = title;
+  }
+
   const proseContainer = document.getElementById('articleProseContainer');
   if (proseContainer) {
     proseContainer.innerHTML = content;

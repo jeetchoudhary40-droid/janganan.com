@@ -159,33 +159,278 @@
     </div>
   </div>
 
+  <!-- Document View & Download Modal -->
+  <div id="docViewerModal" class="search-modal-backdrop" role="dialog" aria-modal="true" aria-label="Document Viewer">
+    <div class="search-modal-card" style="max-width: 850px; max-height: 85vh; overflow-y: auto; padding: 2rem; background: #ffffff; color: #1e293b; border-radius: 16px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; border-bottom: 2px solid #e2e8f0; padding-bottom: 1rem; margin-bottom: 1.5rem;">
+        <div>
+          <span style="display:inline-block; padding:3px 10px; background:#e0f2fe; color:#0369a1; border-radius:12px; font-size:0.75rem; font-weight:700; text-transform:uppercase;" id="modalDocCategory">Category</span>
+          <h2 id="modalDocTitle" style="font-size:1.35rem; margin-top:0.4rem; color:#0f2744;">Document Title</h2>
+        </div>
+        <button id="closeDocModal" style="background:#f1f5f9; border:none; width:36px; height:36px; border-radius:50%; font-size:1.2rem; cursor:pointer; display:flex; align-items:center; justify-content:center; color:#64748b;">✕</button>
+      </div>
+      <div id="modalDocBody" style="font-size:0.95rem; line-height:1.7; color:#334155;">
+        <!-- Injected document content -->
+      </div>
+      <div style="margin-top:2rem; padding-top:1.25rem; border-top:1px solid #e2e8f0; display:flex; justify-content:flex-end; gap:1rem;">
+        <button id="printDocBtn" style="background:#0f2744; color:#ffffff; padding:0.6rem 1.4rem; border:none; border-radius:8px; font-weight:600; cursor:pointer; display:inline-flex; align-items:center; gap:6px;">
+          🖨️ <span data-en="Print / Save as PDF" data-hi="प्रिंट / पीडीएफ सेव करें">प्रिंट / पीडीएफ सेव करें</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
   <script src="js/articles-data.js"></script>
   <script src="js/app.js"></script>
   <script src="js/search.js"></script>
   <script>
+    const DOC_CONTENTS = {
+      d1: {
+        title_hi: "आधिकारिक 31 मकान सूचीकरण एवं आवास प्रश्नावली (Houselisting 31 Questions)",
+        title_en: "Official 31 Houselisting & Housing Census Questionnaire Schedule",
+        body_hi: `
+          <div style="background:#f8fafc; padding:1.25rem; border-radius:8px; border-left:4px solid #FF671F; margin-bottom:1.5rem;">
+            <strong>भारत की जनगणना (Census of India) - चरण 1</strong><br>
+            मकान सूचीकरण और आवास जनगणना के तहत फील्ड प्रगणकों द्वारा पूछे जाने वाले सभी 31 आधिकारिक प्रश्नों की अधिकृत सूची।
+          </div>
+          <table style="width:100%; border-collapse:collapse; font-size:0.875rem; text-align:left;">
+            <thead>
+              <tr style="background:#0f2744; color:#fff;">
+                <th style="padding:10px; border:1px solid #cbd5e1;">क्र.सं.</th>
+                <th style="padding:10px; border:1px solid #cbd5e1;">प्रश्न (Question)</th>
+                <th style="padding:10px; border:1px solid #cbd5e1;">विवरण / विकल्प</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td style="padding:8px; border:1px solid #cbd5e1;">1</td><td style="padding:8px; border:1px solid #cbd5e1;">भवन नंबर (Building Number)</td><td style="padding:8px; border:1px solid #cbd5e1;">नगरपालिका या स्थानीय प्राधिकरण संख्या</td></tr>
+              <tr><td style="padding:8px; border:1px solid #cbd5e1;">2</td><td style="padding:8px; border:1px solid #cbd5e1;">जनगणना मकान नंबर (Census House No.)</td><td style="padding:8px; border:1px solid #cbd5e1;">प्रगणक द्वारा आवंटित विशिष्ट संख्या</td></tr>
+              <tr><td style="padding:8px; border:1px solid #cbd5e1;">3-5</td><td style="padding:8px; border:1px solid #cbd5e1;">मकान की सामग्री (फर्श, दीवार, छत)</td><td style="padding:8px; border:1px solid #cbd5e1;">कच्चा / पक्का / कंक्रीट / टाइल</td></tr>
+              <tr><td style="padding:8px; border:1px solid #cbd5e1;">6</td><td style="padding:8px; border:1px solid #cbd5e1;">मकान का उपयोग (Use of Census House)</td><td style="padding:8px; border:1px solid #cbd5e1;">आवासीय / दुकान / कार्यालय / अन्य</td></tr>
+              <tr><td style="padding:8px; border:1px solid #cbd5e1;">7</td><td style="padding:8px; border:1px solid #cbd5e1;">मकान की स्थिति (Condition of House)</td><td style="padding:8px; border:1px solid #cbd5e1;">अच्छी / संतोषजनक / जीर्ण-शीर्ण</td></tr>
+              <tr><td style="padding:8px; border:1px solid #cbd5e1;">8</td><td style="padding:8px; border:1px solid #cbd5e1;">परिवार नंबर (Household Number)</td><td style="padding:8px; border:1px solid #cbd5e1;">सामान्यतः एक चूल्हे पर खाने वाले सदस्य</td></tr>
+              <tr><td style="padding:8px; border:1px solid #cbd5e1;">9-11</td><td style="padding:8px; border:1px solid #cbd5e1;">परिवार के कुल सदस्य एवं मुखिया का नाम</td><td style="padding:8px; border:1px solid #cbd5e1;">पुरुष, महिला, अन्य लिंग संख्या एवं जाति वर्ग</td></tr>
+              <tr><td style="padding:8px; border:1px solid #cbd5e1;">12-14</td><td style="padding:8px; border:1px solid #cbd5e1;">स्वामित्व स्थिति एवं कमरों की संख्या</td><td style="padding:8px; border:1px solid #cbd5e1;">स्वयं का / किराए का / कमरों की कुल संख्या</td></tr>
+              <tr><td style="padding:8px; border:1px solid #cbd5e1;">15-18</td><td style="padding:8px; border:1px solid #cbd5e1;">पेयजल स्रोत एवं प्रकाश का मुख्य स्रोत</td><td style="padding:8px; border:1px solid #cbd5e1;">नल / हैंडपंप / ट्यूबवेल • बिजली / सौर ऊर्जा</td></tr>
+              <tr><td style="padding:8px; border:1px solid #cbd5e1;">19-21</td><td style="padding:8px; border:1px solid #cbd5e1;">शौचालय की सुविधा एवं जल निकासी</td><td style="padding:8px; border:1px solid #cbd5e1;">व्यक्तिगत फ्लश / सार्वजनिक • बंद नाली / खुली</td></tr>
+              <tr><td style="padding:8px; border:1px solid #cbd5e1;">22-24</td><td style="padding:8px; border:1px solid #cbd5e1;">रसोईघर एवं खाना पकाने का ईंधन</td><td style="padding:8px; border:1px solid #cbd5e1;">LPG/PNG / बायोगैस / बिजली / लकड़ी</td></tr>
+              <tr><td style="padding:8px; border:1px solid #cbd5e1;">25-30</td><td style="padding:8px; border:1px solid #cbd5e1;">परिसंपत्तियां (रेडियो, टीवी, इंटरनेट, वाहन)</td><td style="padding:8px; border:1px solid #cbd5e1;">स्मार्टफोन, ब्रॉडबैंड, 2-व्हीलर, 4-व्हीलर</td></tr>
+              <tr><td style="padding:8px; border:1px solid #cbd5e1;">31</td><td style="padding:8px; border:1px solid #cbd5e1;">उपभोग किया जाने वाला मुख्य अनाज</td><td style="padding:8px; border:1px solid #cbd5e1;">गेहूं / चावल / बाजरा / मक्का आदि</td></tr>
+            </tbody>
+          </table>
+        `,
+        body_en: `
+          <div style="background:#f8fafc; padding:1.25rem; border-radius:8px; border-left:4px solid #FF671F; margin-bottom:1.5rem;">
+            <strong>Census of India - Phase 1 Houselisting</strong><br>
+            Complete authorized schedule of all 31 household and housing parameters collected by field enumerators.
+          </div>
+          <table style="width:100%; border-collapse:collapse; font-size:0.875rem; text-align:left;">
+            <thead>
+              <tr style="background:#0f2744; color:#fff;">
+                <th style="padding:10px; border:1px solid #cbd5e1;">Q. No.</th>
+                <th style="padding:10px; border:1px solid #cbd5e1;">Parameter / Question</th>
+                <th style="padding:10px; border:1px solid #cbd5e1;">Options / Categories</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td style="padding:8px; border:1px solid #cbd5e1;">1-2</td><td style="padding:8px; border:1px solid #cbd5e1;">Building & Census House Number</td><td style="padding:8px; border:1px solid #cbd5e1;">Local Municipal No. & Assigned Census ID</td></tr>
+              <tr><td style="padding:8px; border:1px solid #cbd5e1;">3-5</td><td style="padding:8px; border:1px solid #cbd5e1;">Predominant Material of Floor, Wall & Roof</td><td style="padding:8px; border:1px solid #cbd5e1;">Pucca / Concrete / Tiles / Brick</td></tr>
+              <tr><td style="padding:8px; border:1px solid #cbd5e1;">6-7</td><td style="padding:8px; border:1px solid #cbd5e1;">Use and Condition of Census House</td><td style="padding:8px; border:1px solid #cbd5e1;">Residential / Shop / Office • Good / Livable</td></tr>
+              <tr><td style="padding:8px; border:1px solid #cbd5e1;">8-11</td><td style="padding:8px; border:1px solid #cbd5e1;">Household Composition & Head Details</td><td style="padding:8px; border:1px solid #cbd5e1;">Name of Head, Gender Count, Social Category</td></tr>
+              <tr><td style="padding:8px; border:1px solid #cbd5e1;">12-14</td><td style="padding:8px; border:1px solid #cbd5e1;">Ownership Status & Dwelling Rooms</td><td style="padding:8px; border:1px solid #cbd5e1;">Owned / Rented / Any other • Number of rooms</td></tr>
+              <tr><td style="padding:8px; border:1px solid #cbd5e1;">15-18</td><td style="padding:8px; border:1px solid #cbd5e1;">Drinking Water Source & Lighting Source</td><td style="padding:8px; border:1px solid #cbd5e1;">Piped tap / Handpump / Tube-well • Electricity / Solar</td></tr>
+              <tr><td style="padding:8px; border:1px solid #cbd5e1;">19-21</td><td style="padding:8px; border:1px solid #cbd5e1;">Toilet Access & Drainage Connection</td><td style="padding:8px; border:1px solid #cbd5e1;">Flush toilet / Septic tank • Closed / Open drain</td></tr>
+              <tr><td style="padding:8px; border:1px solid #cbd5e1;">22-24</td><td style="padding:8px; border:1px solid #cbd5e1;">Kitchen & Primary Cooking Fuel</td><td style="padding:8px; border:1px solid #cbd5e1;">LPG / PNG / Bio-gas / Electric</td></tr>
+              <tr><td style="padding:8px; border:1px solid #cbd5e1;">25-30</td><td style="padding:8px; border:1px solid #cbd5e1;">Household Assets Availability</td><td style="padding:8px; border:1px solid #cbd5e1;">Radio, TV, Internet, Computer, 2-Wheeler, Car</td></tr>
+              <tr><td style="padding:8px; border:1px solid #cbd5e1;">31</td><td style="padding:8px; border:1px solid #cbd5e1;">Main Cereal Consumed in Household</td><td style="padding:8px; border:1px solid #cbd5e1;">Wheat / Rice / Millets / Maize</td></tr>
+            </tbody>
+          </table>
+        `
+      },
+      d2: {
+        title_hi: "फील्ड प्रगणकों एवं पर्यवेक्षकों के लिए आधिकारिक निर्देश पुस्तिका",
+        title_en: "Instruction Manual for Field Enumerators & Supervisors (Handbook)",
+        body_hi: `
+          <div style="background:#f8fafc; padding:1.25rem; border-radius:8px; border-left:4px solid #046A38; margin-bottom:1.5rem;">
+            <strong>प्रगणक परिचालन संहिता (Operational Guide)</strong><br>
+            डिजिटल प्रगणक मोबाइल ऐप संचालन, ई-ब्लॉक मैपिंग और हाउस-लिस्टिंग के लिए मानक प्रक्रियाएं।
+          </div>
+          <h3 style="color:#0f2744; margin-bottom:0.5rem;">मुख्य अध्याय एवं निर्देश:</h3>
+          <ul style="padding-left:1.25rem; line-height:1.8;">
+            <li><strong>अध्याय 1:</strong> जनगणना अधिनियम, 1948 के तहत प्रगणकों के वैधानिक अधिकार एवं कर्तव्य।</li>
+            <li><strong>अध्याय 2:</strong> प्रगणक ब्लॉक (EB) लेआउट एवं नॉट-फॉर-स्केल मानचित्रण प्रक्रिया।</li>
+            <li><strong>अध्याय 3:</strong> डिजिटल मोबाइल ऐप (CMMS) में डेटा प्रविष्टि, ऑफ़लाइन सिंकिंग एवं त्रुटि निवारण।</li>
+            <li><strong>अध्याय 4:</strong> नागरिक स्व-गणना संदर्भ पहचान पत्र (RID) का भौतिक सत्यापन।</li>
+            <li><strong>अध्याय 5:</strong> गोपनीयता शपथ एवं संवेदनशील डेटा सुरक्षा प्रोटोकॉल।</li>
+          </ul>
+        `,
+        body_en: `
+          <div style="background:#f8fafc; padding:1.25rem; border-radius:8px; border-left:4px solid #046A38; margin-bottom:1.5rem;">
+            <strong>Enumerator Field Operations Handbook</strong><br>
+            Standard operating procedures for mobile CMMS app operations, layout sketch mapping, and RID validation.
+          </div>
+          <h3 style="color:#0f2744; margin-bottom:0.5rem;">Key Operational Chapters:</h3>
+          <ul style="padding-left:1.25rem; line-height:1.8;">
+            <li><strong>Section 1:</strong> Legal powers and duties under Census Act, 1948.</li>
+            <li><strong>Section 2:</strong> Enumeration Block (EB) boundary demarcation & not-to-scale sketch maps.</li>
+            <li><strong>Section 3:</strong> Mobile App entry guidelines, local offline storage, and cloud syncing.</li>
+            <li><strong>Section 4:</strong> Citizen Self-Enumeration Reference ID (RID) scanning & on-field validation.</li>
+            <li><strong>Section 5:</strong> Strict statutory confidentiality rules under Section 15.</li>
+          </ul>
+        `
+      },
+      d3: {
+        title_hi: "डिजिटल जनगणना अधिसूचना पर भारत का राजपत्र (Gazette Notification)",
+        title_en: "The Gazette of India: Official Notification on Digital Census Rollout",
+        body_hi: `
+          <div style="background:#f8fafc; padding:1.25rem; border-radius:8px; border-left:4px solid #06038D; margin-bottom:1.5rem;">
+            <strong>भारत का राजपत्र (असाधारण) - गृह मंत्रालय / ORGI</strong><br>
+            जनगणना नियमावली और डिजिटल स्व-गणना के प्रावधानों को अधिसूचित करने वाला आधिकारिक राजपत्र।
+          </div>
+          <p><strong>अधिसूचना सारांश:</strong></p>
+          <p>भारत सरकार, गृह मंत्रालय द्वारा जनगणना अधिनियम, 1948 की धारा 3 के अंतर्गत प्रदत्त शक्तियों का प्रयोग करते हुए यह घोषणा की गई है कि राष्ट्रीय जनगणना के दो चरणों (चरण-1 मकान सूचीकरण एवं चरण-2 जनसंख्या गणना) को डिजिटल रूप से निष्पादित किया जाएगा।</p>
+          <p>नागरिकों को पहली बार आधिकारिक वेब एवं मोबाइल इंटरफेस के माध्यम से स्वयं का विवरण भरने (Self-Enumeration) की विधिक सुविधा प्रदान की गई है।</p>
+        `,
+        body_en: `
+          <div style="background:#f8fafc; padding:1.25rem; border-radius:8px; border-left:4px solid #06038D; margin-bottom:1.5rem;">
+            <strong>The Gazette of India (Extraordinary) - Ministry of Home Affairs</strong><br>
+            Statutory notification formalizing digital enumeration methodology and self-enumeration framework.
+          </div>
+          <p><strong>Executive Summary:</strong></p>
+          <p>Under Section 3 of the Census Act, 1948, the Central Government hereby notifies the commencement of nationwide Census operations in two sequential phases with digital self-enumeration provisions for all residents.</p>
+        `
+      },
+      d4: {
+        title_hi: "नागरिक स्व-गणना मोबाइल ऐप त्वरित संदर्भ गाइड (Citizen Guide)",
+        title_en: "Citizen Self-Enumeration Mobile App Quick Reference Guide",
+        body_hi: `
+          <div style="background:#f8fafc; padding:1.25rem; border-radius:8px; border-left:4px solid #FF671F; margin-bottom:1.5rem;">
+            <strong>स्व-गणना त्वरित संदर्भ मार्गदर्शिका</strong><br>
+            घर बैठे 5 आसान चरणों में अपना जनगणना फॉर्म ऑनलाइन पूरा करने के लिए संपूर्ण चरण-दर-चरण निर्देश।
+          </div>
+          <ol style="padding-left:1.25rem; line-height:1.9;">
+            <li><strong>चरण 1:</strong> आधिकारिक पोर्टल पर जाएं और अपने 10-अंकीय मोबाइल नंबर व ओटीपी से लॉगिन करें।</li>
+            <li><strong>चरण 2:</strong> परिवार के मुखिया और सभी सदस्यों का बुनियादी विवरण दर्ज करें।</li>
+            <li><strong>चरण 3:</strong> आवास एवं 31 सुविधाओं संबंधी प्रश्नों का उत्तर दें।</li>
+            <li><strong>चरण 4:</strong> विवरण की समीक्षा करें और फॉर्म सबमिट करें।</li>
+            <li><strong>चरण 5:</strong> 12-अंकीय संदर्भ पहचान नंबर (RID) सुरक्षित रखें और प्रगणक को दिखाएं।</li>
+          </ol>
+        `,
+        body_en: `
+          <div style="background:#f8fafc; padding:1.25rem; border-radius:8px; border-left:4px solid #FF671F; margin-bottom:1.5rem;">
+            <strong>Citizen Self-Enumeration Step-by-Step Guide</strong><br>
+            5 easy steps to complete your household census questionnaire online from home.
+          </div>
+          <ol style="padding-left:1.25rem; line-height:1.9;">
+            <li><strong>Step 1:</strong> Visit official portal and log in using mobile OTP verification.</li>
+            <li><strong>Step 2:</strong> Fill in household head and family members basic information.</li>
+            <li><strong>Step 3:</strong> Answer the 31 housing and amenity questions.</li>
+            <li><strong>Step 4:</strong> Review declaration and click Submit.</li>
+            <li><strong>Step 5:</strong> Save the 12-digit Reference ID (RID) to present to the field enumerator.</li>
+          </ol>
+        `
+      }
+    };
+
     document.addEventListener('DOMContentLoaded', () => {
       const grid = document.getElementById('downloadsGrid');
+      const modal = document.getElementById('docViewerModal');
+      const closeBtn = document.getElementById('closeDocModal');
+      const printBtn = document.getElementById('printDocBtn');
+      const modalTitle = document.getElementById('modalDocTitle');
+      const modalCategory = document.getElementById('modalDocCategory');
+      const modalBody = document.getElementById('modalDocBody');
+
       function renderDownloads() {
         const isHindi = document.body.classList.contains('lang-hi');
         grid.innerHTML = JANGANANA_DATA.downloads.map(d => `
-          <div class="service-card" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
-            <div style="display:flex; align-items:center; gap:1rem;">
-              <div class="service-icon-box icon-saffron" style="font-size:1.5rem;">📄</div>
+          <div class="service-card" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1.25rem; padding:1.5rem; border-radius:12px; border:1px solid #e2e8f0;">
+            <div style="display:flex; align-items:center; gap:1.25rem;">
+              <div class="service-icon-box icon-saffron" style="font-size:1.75rem; width:52px; height:52px; display:flex; align-items:center; justify-content:center; border-radius:12px; background:#fff7ed; border:1px solid #ffedd5;">📄</div>
               <div>
-                <h3 style="font-size:1.05rem; margin-bottom:0.25rem;">${isHindi ? d.title_hi : d.title_en}</h3>
-                <p style="font-size:0.8125rem; color:var(--text-muted);">
-                  ${d.format} • ${d.size} • <span style="color:var(--color-green); font-weight:600;">${d.category}</span> • ${d.date}
+                <h3 style="font-size:1.1rem; margin-bottom:0.35rem; color:#0f2744; font-weight:700;">${isHindi ? d.title_hi : d.title_en}</h3>
+                <p style="font-size:0.85rem; color:var(--text-muted); display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap;">
+                  <span style="background:#f1f5f9; padding:2px 8px; border-radius:4px; font-weight:600; color:#334155;">${d.format}</span>
+                  <span>•</span>
+                  <span>${d.size}</span>
+                  <span>•</span>
+                  <span style="color:#046A38; font-weight:600;">${d.category}</span>
+                  <span>•</span>
+                  <span>📅 ${d.date}</span>
                 </p>
               </div>
             </div>
-            <div>
-              <button onclick="alert('${isHindi ? 'डाउनलोड शुरू हो रहा है: ' : 'Downloading: '} ${isHindi ? d.title_hi : d.title_en}')" class="btn-self-enum" style="padding:0.5rem 1.25rem;">
-                ⬇️ ${isHindi ? 'डाउनलोड करें (' + d.size + ')' : 'Download (' + d.size + ')'}
+            <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+              <button onclick="openDocModal('${d.id}')" style="background:#f8fafc; color:#0f2744; border:1px solid #cbd5e1; padding:0.6rem 1.1rem; border-radius:8px; font-weight:600; cursor:pointer; font-size:0.875rem; transition:all 0.2s;">
+                👁️ ${isHindi ? 'दस्तावेज देखें' : 'View Document'}
+              </button>
+              <button onclick="downloadDocPDF('${d.id}')" class="btn-self-enum" style="padding:0.6rem 1.25rem; font-size:0.875rem;">
+                ⬇️ ${isHindi ? 'पीडीएफ डाउनलोड' : 'Download PDF'}
               </button>
             </div>
           </div>
         `).join('');
       }
+
+      window.openDocModal = function(id) {
+        const isHindi = document.body.classList.contains('lang-hi');
+        const doc = DOC_CONTENTS[id] || DOC_CONTENTS.d1;
+        modalTitle.textContent = isHindi ? doc.title_hi : doc.title_en;
+        modalCategory.textContent = isHindi ? 'आधिकारिक प्रपत्र' : 'Official Document';
+        modalBody.innerHTML = isHindi ? doc.body_hi : doc.body_en;
+        modal.style.display = 'flex';
+      };
+
+      window.downloadDocPDF = function(id) {
+        const isHindi = document.body.classList.contains('lang-hi');
+        const doc = DOC_CONTENTS[id] || DOC_CONTENTS.d1;
+        const title = isHindi ? doc.title_hi : doc.title_en;
+        const content = isHindi ? doc.body_hi : doc.body_en;
+
+        const printWindow = window.open('', '_blank', 'width=900,height=750');
+        printWindow.document.write(\`
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <title>\${title} - जनगणना.com</title>
+            <meta charset="utf-8">
+            <style>
+              body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; padding: 40px; color: #1e293b; }
+              .header { border-bottom: 3px solid #FF671F; padding-bottom: 15px; margin-bottom: 25px; display:flex; justify-content:space-between; align-items:center; }
+              .title { font-size: 22px; font-weight: bold; color: #0f2744; margin: 0; }
+              .badge { font-size: 12px; background: #e0f2fe; color: #0369a1; padding: 4px 10px; border-radius: 4px; font-weight: bold; }
+              .footer { margin-top: 40px; border-top: 1px solid #cbd5e1; padding-top: 10px; font-size: 11px; color: #64748b; text-align: center; }
+              table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+              th, td { border: 1px solid #cbd5e1; padding: 8px 12px; text-align: left; font-size: 13px; }
+              th { background: #0f2744; color: #ffffff; }
+              @media print { button { display: none; } }
+            </style>
+          </head>
+          <body>
+            <div class="header">
+              <div>
+                <h1 class="title">🇮🇳 जनगणना (Janganana) - Census of India</h1>
+                <p style="margin:4px 0 0 0; color:#64748b; font-size:13px;">\${title}</p>
+              </div>
+              <div class="badge">OFFICIAL RESOURCE</div>
+            </div>
+            <div>\${content}</div>
+            <div class="footer">
+              Downloaded from <strong>जनगणना.com</strong> • Census Assistance Portal • 24x7 Helpline: 1800-180-2026
+            </div>
+            <script>
+              window.onload = function() {
+                window.print();
+              };
+            <\/script>
+          </body>
+          </html>
+        \`);
+        printWindow.document.close();
+      };
+
+      if (closeBtn) closeBtn.onclick = () => { modal.style.display = 'none'; };
+      if (printBtn) printBtn.onclick = () => { window.print(); };
+      window.onclick = (e) => { if (e.target === modal) modal.style.display = 'none'; };
 
       renderDownloads();
       window.addEventListener('languageChanged', renderDownloads);
