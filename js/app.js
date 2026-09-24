@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initAccessibility();
   initLanguage();
   initLivePopulationCounter();
+  initVisitorCounter();
   initTicker();
   initMobileMenu();
   initFaqAccordions();
@@ -339,3 +340,18 @@ function registerServiceWorker() {
     });
   }
 }
+
+/* ==========================================================================
+   9. Live Visitor Counter Engine
+   ========================================================================== */
+function initVisitorCounter() {
+  const counterEl = document.getElementById('visitorCounter');
+  if (!counterEl) return;
+  const baseCount = 128450;
+  let visits = parseInt(localStorage.getItem('janganana_visit_count') || '0', 10);
+  visits += 1;
+  localStorage.setItem('janganana_visit_count', visits.toString());
+  const total = baseCount + visits;
+  counterEl.textContent = total.toLocaleString('en-IN');
+}
+
